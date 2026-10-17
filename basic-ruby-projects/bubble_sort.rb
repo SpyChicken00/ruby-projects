@@ -4,28 +4,27 @@ def bubble_sort(array)
   #
   #
   swaps = 1
-  # stop_index = array.length - 1
+  unsorted_length = array.length - 1 ## change name 
   while swaps > 0
     swaps = 0
+    unsorted_length -= 1
+
     array.each_with_index do |num, i|
-      p array
-      p num
       next_num = array[i + 1]
-      p next_num
-      break if next_num == nil #or find way to check if last index
+      
+      break if i > unsorted_length ##last element each iteration will always bubble up at end, redundant check
       if num > next_num
         swaps += 1
+
         temp = num
         array[i] = next_num
-        array[i + 1] = temp  #swap number values 
+        array[i + 1] = temp  #swap number values. better way to swap in place?
+        p array
       end
-      p num
-      p next_num
-      p array
+      
     end
     
     p "swaps: #{swaps}"
-    p array
   end
   array
 end
