@@ -1,30 +1,24 @@
+#go through list in order repeatedly and swap elements 
+#if left is bigger than right, if no swaps then list is sorted
 def bubble_sort(array)
-  #loop over every element and check if the current element is 
-  #the last element will always be sorted so we can gradually go through less of the list
-  #
-  #
   swaps = 1
   unsorted_length = array.length - 1 ## change name 
+
   while swaps > 0
     swaps = 0
     unsorted_length -= 1
-
     array.each_with_index do |num, i|
+      ##last element each iteration will always bubble up at end, redundant check
+      break if i > unsorted_length 
+  
       next_num = array[i + 1]
-      
-      break if i > unsorted_length ##last element each iteration will always bubble up at end, redundant check
       if num > next_num
         swaps += 1
-
-        temp = num
-        array[i] = next_num
-        array[i + 1] = temp  #swap number values. better way to swap in place?
-        p array
+        array[i], array[i+1] = array[i+1], array[i]
+        # p array
       end
-      
     end
-    
-    p "swaps: #{swaps}"
+    # p "swaps: #{swaps}"
   end
   array
 end
