@@ -27,3 +27,4 @@ p stock_picker([17,3,6,9,15,8,6,1,10])
 p stock_picker([3,6,9,15,8,6,1,10, 24, 10, 2, 34, 6, 2, 1])
 p stock_picker([100, 2, 3, 8, 94, 4, 2, 34, 6]) #highest first
 p stock_picker([100, 2, 3, 8, 7, 4, 2, 2, 1]) #highest first, lowest last
+
