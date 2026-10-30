@@ -6,4 +6,8 @@ class Player
     @marker = marker
     @score = 0
   end
+
+  def to_s
+    "#{@name} - #{@marker}; Score: #{@score}"
+  end
 end
