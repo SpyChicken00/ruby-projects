@@ -1,5 +1,5 @@
 class SecretCode
-  attr_reader :length 
+  attr_reader :length, :code
 
   def initialize(code_string)
     @code = code_string.to_s
@@ -46,3 +46,10 @@ code = SecretCode.new("1234")
 guess = "1243"
 p code.match?(guess) ? "Yay! That's Right" : code.feedback(guess)
 #TODO TEST EDGE CASES OF VARIOUS CODES
+
+guess = ""
+code = SecretCode.new("4312")
+guess = "4312"
+p code.match?(guess) ? "Yay! That's Right" : code.feedback(guess)
+
+
