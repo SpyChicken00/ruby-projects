@@ -1,30 +1,36 @@
 require_relative "secret_code"
-class CodeCreator 
+class CodeCreator < Player #currently Computer
   # list of all combinations of 123456 -> computer player needs this too
-  ALL_CODES = gen_all_combinations
 
-  ##@@trying to make const or static so it doesnt get called more than needd to 
-
-  attr_reader :code
+  attr_reader :code_str #DEBUG, Delete later
   def initialize
-    @code = SecretCode.new(ALL_CODES.sample)
+    @all_codes = gen_all_combinations
+    change_code
   end
 
-  # private 
+  def feedback(guess)
+    #p "DEBUG == Code: #{@code_str} Guess: #{guess}"
+    @secret_code.feedback(guess)
+  end 
 
-
-  def feedback
-    code.feedback()
+  def code_match?(guess)
+    @secret_code.match?(guess)
   end
+
+  def change_code
+    @secret_code = SecretCode.new(@all_codes.sample)
+    @code_str = @secret_code.code
+  end
+  private
 
   def gen_all_combinations
     allCodes = []
-    # [1, 2, 3, 4, 5, 6].permutation(4).to_a.each{|arr| allCodes.push(arr.join(""))}
     [1, 2, 3, 4, 5, 6].permutation(4) {|arr| allCodes.push(arr.join(""))}
     allCodes
-    #array.join
   end
 end
 
 CPU = CodeCreator.new()
-p CPU.code
+p CPU.code_str
+p CPU.feedback("1234")
+p CPU.change_code
