@@ -1,15 +1,13 @@
 require_relative "secret_code"
-class CodeCreator < Player #currently Computer
-  # list of all combinations of 123456 -> computer player needs this too
+class CodeCreator < Player
 
-  attr_reader :code_str #DEBUG, Delete later
   def initialize
     @all_codes = gen_all_combinations
     change_code
   end
 
   def feedback(guess)
-    #p "DEBUG == Code: #{@code_str} Guess: #{guess}"
+    p "DEBUG == Code: #{@code_str}" #Guess: #{guess}"
     @secret_code.feedback(guess)
   end 
 
@@ -30,7 +28,6 @@ class CodeCreator < Player #currently Computer
   end
 end
 
-CPU = CodeCreator.new()
-p CPU.code_str
-p CPU.feedback("1234")
-p CPU.change_code
+# CPU = CodeCreator.new()
+# p CPU.feedback("1234")
+# p CPU.change_code

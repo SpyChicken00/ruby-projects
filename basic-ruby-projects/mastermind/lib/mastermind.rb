@@ -29,8 +29,6 @@ class Mastermind
   def game_loop
     guess = ""
     turn_num = 1
-
-    p @creator.code_str
     
     while (turn_num <= 12) do
       puts "Please enter a 4-digit code with numbers 1-6"
@@ -43,13 +41,10 @@ class Mastermind
       end
       puts "Turn #{turn_num}/12  Guess: #{guess} Feedback: #{@creator.feedback(guess)}"
       turn_num += 1
-      
     end
 
     puts "Out of Guesses! Code Creator Wins!!"
     @creator.score += 1
-    #give cpu a point 
-    # ask to play again, choose role
   end
 
   def play_again?
@@ -57,6 +52,7 @@ class Mastermind
     if (gets.chomp.downcase == "y")
       puts "Let's play again!"
       @creator.change_code()
+      #choose_role
       game_loop
       play_again?
     end

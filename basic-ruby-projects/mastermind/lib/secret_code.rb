@@ -26,15 +26,12 @@ class SecretCode
         red += 1 
         guess[i] = "X" #mark off char in guess
         code_marked[i] = "X"
-        # p guess
-        # p code_marked
       end
     end
     red
   end
 
   def white_pins(guess, code_marked)
-    p "DEBUG: guess is now  #{guess}" #DELETE
     white = 0
     code_marked.split("").each do |char|
       next if (char == "X")
@@ -43,22 +40,21 @@ class SecretCode
         index = guess.index(char)
         guess[index] = "X" #mark off char in guess
         code_marked[index] = "X"
-        p "DEBUG guess is now  #{guess}" #DELETE
       end
     end
     white
   end
 end
 
-code = SecretCode.new("2145")
-guess = "2121"
-p code.match?(guess) ? "Yay! That's Right" : code.feedback(guess)
-#TODO TEST EDGE CASES OF VARIOUS CODES
+# code = SecretCode.new("2145")
+# guess = "2121"
+# p code.match?(guess) ? "Yay! That's Right" : code.feedback(guess)
+# #TODO TEST EDGE CASES OF VARIOUS CODES
 
-guess = ""
-code = SecretCode.new("2122")
-guess = "2222"
-p code.match?(guess) ? "Yay! That's Right" : code.feedback(guess)
-p code.code
+# guess = ""
+# code = SecretCode.new("2122")
+# guess = "2222"
+# p code.match?(guess) ? "Yay! That's Right" : code.feedback(guess)
+# p code.code
 
 
