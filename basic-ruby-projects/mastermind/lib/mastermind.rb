@@ -67,11 +67,13 @@ class Mastermind
         guessor_win
         return
       end
+      puts feedback.upcase
       @guessor.consider(guess, feedback.upcase)
       turn_num += 1
     end
 
     code_creator_win
+    @guessor.reset
   end
 
   def code_creator_win

@@ -8,7 +8,7 @@ class CodeCreator < Player
   end
 
   def guess_num
-    @remaining_codes.first #TEST TODO FLESH OUT LOGIC
+    @remaining_codes.sample #TEST TODO FLESH OUT LOGIC
     #Rename class and adjust names accordingly
     #computer will take in a string from the user like 0r2w
     #first num is num of correct nums, 2nd means one of the numbers is correct
@@ -31,11 +31,14 @@ class CodeCreator < Player
       #if feedback string does not match remove from remaining
       unless (feedback == code.feedback(guess))
         @remaining_codes.delete(code_string)
+        #current code is just deleting half of the arrays every time
       end
     end
     puts @remaining_codes.length
     #run through all remaining codes and determine secret_code feedback for each one
     #if the feedback is different than the current, remove it from the list
+    #
+    #DOESNT PROPERLY GUESS CODE, LETS GO WITH A FOLLOW RULES APPROACH TOMORROW
   end
 
   def feedback(guess)
@@ -56,7 +59,8 @@ class CodeCreator < Player
 
   def gen_all_combinations
     allCodes = []
-    [1, 2, 3, 4, 5, 6].permutation(4) {|arr| allCodes.push(arr.join(""))}
+    [1, 2, 3, 4, 5, 6].repeated_permutation(4) {|arr| allCodes.push(arr.join(""))} #doesnt include duplicates
+    # puts allCodes.include?("1111")
     allCodes
   end
   
