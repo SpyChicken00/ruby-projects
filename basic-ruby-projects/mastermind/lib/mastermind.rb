@@ -43,7 +43,7 @@ class Mastermind
       exit if (guess == "q")
       if @creator.code_match?(guess) 
         guessor_win
-        @creator.change_code()
+        @creator.reset
         return
       end
       puts "Turn #{turn_num}/12  Guess: #{guess} Feedback: #{@creator.feedback(guess)}"
@@ -51,7 +51,7 @@ class Mastermind
     end
 
     code_creator_win
-    @creator.change_code()
+    @creator.reset
   end
 
   def mastermind_game_loop #where computer guesses code and you tell it what to do
@@ -67,6 +67,7 @@ class Mastermind
         guessor_win
         return
       end
+      @guessor.consider(guess, feedback.upcase)
       turn_num += 1
     end
 
