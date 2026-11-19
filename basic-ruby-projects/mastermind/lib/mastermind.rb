@@ -65,6 +65,7 @@ class Mastermind
       exit if (feedback.downcase == "q")
       if (feedback.downcase == "bingo")
         guessor_win
+        @guessor.reset
         return
       end
       puts feedback.upcase
